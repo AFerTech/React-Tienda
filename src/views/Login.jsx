@@ -1,4 +1,4 @@
-
+import { Link} from 'react-router-dom'
 export default function Login() {
   return (
     <>
@@ -35,6 +35,11 @@ export default function Login() {
             value="Iniciar Sesión" />
         </form>
     </div>
+    <nav className="mt-5">
+      <Link to="/auth/registro">
+        Crear una cuenta
+      </Link>
+    </nav>
     </>
   )
 }
