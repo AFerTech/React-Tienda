@@ -2,7 +2,6 @@
 export default function Registro() {
   return (
     <>
-    
     <h1 className="text-4xl font-black">Crear Cuenta</h1>
     <p>Crear Cuenta</p>
 
