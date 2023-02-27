@@ -1,7 +1,9 @@
 import {createBrowserRouter} from  'react-router-dom'
+import {Outlet} from 'react-router-dom';
+
 import Layout from './layouts/Layout'
 import AuthLayout from './layouts/Auth.layout'
-import Inicio from './views/inicio'
+import Inicio from './views/Inicio'
 import Login from './views/login'
 import Registro from './views/registro'
 
@@ -9,7 +11,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout />,
-        childre: [
+        children: [
             {
                 index: true,
                 element: <Inicio />
