@@ -5,12 +5,12 @@ const QuiscoContext = createContext();
 const QuioscoProvider = ({children}) =>{
 
     return(
-        <QuioscoContext.Provider
+        <QuiscoContext.Provider
             value={{
-
+                
             }}
 
-        >{children}</QuioscoContext.Provider>
+        >{children}</QuiscoContext.Provider>
     )
 }
 
