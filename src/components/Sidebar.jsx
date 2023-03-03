@@ -1,4 +1,3 @@
-import { useState } from "react"
 import useQuiosco from "../hooks/useQuiosco"
 import Categoria from "./Categoria"
 
