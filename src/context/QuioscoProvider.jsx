@@ -10,6 +10,7 @@ const QuioscoProvider = ({children}) =>{
     const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
     const [modal,setModal] = useState(false);
     const [producto,setProducto] = useState({});
+    const [pedido, setPedido] = useState([]);
 
 
     const handleClickCategoria = id =>{
@@ -33,7 +34,9 @@ const QuioscoProvider = ({children}) =>{
                 modal,
                 handleClickModal,
                 producto,
-                handleSetProducto
+                handleSetProducto,
+                pedido,
+                setPedido
 
             }}
 
