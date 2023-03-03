@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 import Sidebar from '../components/Sidebar';
 import Resumen from '../components/Resumen'
+import ModalProducto from '../components/ModalProducto';
 import useQuiosco from '../hooks/useQuiosco';
 
 
@@ -17,6 +18,7 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement('#root')
 
 export default function Layout() {
 
@@ -37,14 +39,11 @@ export default function Layout() {
 
       </div>
 
-      {modal &&(
+     
         <Modal isOpen={modal} style={customStyles}>
-          <p>Desde Modal</p>
-          <button onClick={handleClickModal} >
-            Cerrar
-          </button>
+          <ModalProducto/>
         </Modal>
-      )}
+      
     </>
   )
 }
