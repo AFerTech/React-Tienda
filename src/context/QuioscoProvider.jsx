@@ -16,8 +16,6 @@ const QuioscoProvider = ({children}) =>{
     }
     const handleClickModal = ()  => {
         setModal(!modal)
-
-        console.log(modal)
     }
 
 
