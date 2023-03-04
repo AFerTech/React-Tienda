@@ -1,4 +1,5 @@
 import useQuiosco from "../hooks/useQuiosco"
+import ResumenProducto from "./ResumenProducto";
 
 export default function Resumen() {
   const {pedido} = useQuiosco();
@@ -14,7 +15,12 @@ export default function Resumen() {
         {pedido.length === 0 ? (
           <p className="text-2xl">No hay productos en el pedido</p>
         ) : (
-          <p>Si hay algo</p>
+          pedido.map(producto =>(
+            <ResumenProducto 
+            key={producto.id}
+            producto={producto}
+            />
+          ))
         )}
       </div>
 
