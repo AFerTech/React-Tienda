@@ -25,7 +25,17 @@ const QuioscoProvider = ({children}) =>{
     }
     // aplica distroctory para no pasar categoria_id, del objeto producto
     const handleAgregarPedido = ({categoria_id, imagen, ...producto}) => {
-        setPedido([...pedido, producto])
+
+        // evita duplicar elementos en el pedido
+        if(pedido.some(pedidoState => pedidoState.id === producto.id)){
+            const pedidoActualizado= pedido.map(pedidoState => pedidoState.id === producto.id ? producto : pedidoState)
+           
+            setPedido(pedidoActualizado)
+           
+        }else{
+            setPedido([...pedido, producto])
+
+        }
     }
 
 
