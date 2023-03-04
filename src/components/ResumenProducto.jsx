@@ -1,3 +1,4 @@
+import { formatearPrecio } from "../helpers";
 
 export default function ResumenProducto({producto}) {
     const {id, nombre, precio, count} = producto;
@@ -9,10 +10,10 @@ export default function ResumenProducto({producto}) {
             <p className="text-xl font-bold">{nombre}</p>
             <p className="text-lg font-bold ">Cantidad: {count}</p>
             <p className="text-lg font-bold text-amber-500">
-              Precio:
+              Precio: {formatearPrecio(precio)}
             </p>
             <p className="text-lg text-gray-700">
-              Subtotal: 
+              Subtotal: {formatearPrecio(precio * count)}
             </p>
           </div>
     
