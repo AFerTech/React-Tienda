@@ -23,6 +23,10 @@ const QuioscoProvider = ({children}) =>{
     const handleSetProducto = producto => {
         setProducto(producto)
     }
+    // aplica distroctory para no pasar categoria_id, del objeto producto
+    const handleAgregarPedido = ({categoria_id, imagen, ...producto}) => {
+        setPedido([...pedido, producto])
+    }
 
 
     return(
@@ -36,7 +40,8 @@ const QuioscoProvider = ({children}) =>{
                 producto,
                 handleSetProducto,
                 pedido,
-                setPedido
+                setPedido,
+                handleAgregarPedido
 
             }}
 

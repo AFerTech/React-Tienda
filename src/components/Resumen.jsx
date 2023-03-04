@@ -3,7 +3,7 @@ import useQuiosco from "../hooks/useQuiosco"
 export default function Resumen() {
   const {pedido} = useQuiosco();
   return (
-    <asside className='w-72 h-screen overflow-y-scroll p-5 text-center'>
+    <aside className='w-72 h-screen overflow-y-scroll p-5 text-center'>
       <h1 className="text-3xl font-black ">
         Pedido
       </h1>
@@ -27,6 +27,6 @@ export default function Resumen() {
             />
           </div>
       </form>
-    </asside>
+    </aside>
   )
 }
