@@ -25,7 +25,7 @@ const QuioscoProvider = ({children}) =>{
         setProducto(producto)
     }
     // aplica distroctory para no pasar categoria_id, del objeto producto
-    const handleAgregarPedido = ({categoria_id, imagen, ...producto}) => {
+    const handleAgregarPedido = ({categoria_id,  ...producto}) => {
 
         // evita duplicar elementos en el pedido
         if(pedido.some(pedidoState => pedidoState.id === producto.id)){
@@ -39,6 +39,11 @@ const QuioscoProvider = ({children}) =>{
             
 
         }
+    }
+    const handleEditarCantidad = id => {
+        const productoActualizar = pedido.filter(producto => producto.id === id)[0];
+        setProducto(productoActualizar);
+        setModal(!modal);
     }
 
 
@@ -54,7 +59,8 @@ const QuioscoProvider = ({children}) =>{
                 handleSetProducto,
                 pedido,
                 setPedido,
-                handleAgregarPedido
+                handleAgregarPedido,
+                handleEditarCantidad
 
             }}
 
