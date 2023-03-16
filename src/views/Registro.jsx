@@ -9,23 +9,25 @@ export default function Registro() {
   const passwordRef = createRef();
   const passwordConfirmRef = createRef();
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const [errores, setErrores] = useState([])
 
-    const datos = {
-      name : nameRef.current.value,
-      email : emailRef.current.value,
-      password : passwordRef.current.value,
-      password_confirmation: passwordConfirmRef.current.value
-    }
-    try {
-        const respuesta = await clienteAxios.post('/api/registro', datos)
+  // const handleSubmit = async e => {
+  //   e.preventDefault();
 
-    } catch (error) {
-        console.log(error)
-    }
+  //   const datos = {
+  //     name : nameRef.current.value,
+  //     email : emailRef.current.value,
+  //     password : passwordRef.current.value,
+  //     password_confirmation: passwordConfirmRef.current.value
+  //   }
+  //   try {
+  //       const respuesta = await clienteAxios.post('api/registro', datos)
+  //       console.log(respuesta)
+  //   } catch (error) {
+  //       setErrores(Object.values(error.response.data.errors))
+  //   }
 
-  }
+  // }
 
 
   return (
@@ -35,8 +37,11 @@ export default function Registro() {
 
     <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
         <form 
+            action=''
             onSubmit={handleSubmit}
+            noValidate
         >
+            {errores ? errores.map(error =>   <p>{error}</p>) : null }
             <div className="mb-4">
                 <label htmlFor="name" className="text-slate-800">Nombre: </label>
                 <input 
@@ -82,11 +87,13 @@ export default function Registro() {
                      />
             </div>
             <input 
-            type="submit" 
-            className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
-            name="" 
-            id=""
-            value="Crear Cuenta" />
+              type="submit" 
+              className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
+              name="" 
+              id=""
+              value="Crear Cuenta" 
+            />
+
         </form>
     </div>
     <nav className="mt-5">
