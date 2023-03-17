@@ -1,6 +1,7 @@
 import {createRef, useState} from 'react'
 import { Link} from 'react-router-dom'
 import clienteAxios from '../config/axios';
+import Alerta from '../components/Alerta';
 
 export default function Registro() {
 
@@ -11,23 +12,24 @@ export default function Registro() {
 
   const [errores, setErrores] = useState([])
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
+  const handleSubmit = async e => {
+    e.preventDefault();
 
-  //   const datos = {
-  //     name : nameRef.current.value,
-  //     email : emailRef.current.value,
-  //     password : passwordRef.current.value,
-  //     password_confirmation: passwordConfirmRef.current.value
-  //   }
-  //   try {
-  //       const respuesta = await clienteAxios.post('api/registro', datos)
-  //       console.log(respuesta)
-  //   } catch (error) {
-  //       setErrores(Object.values(error.response.data.errors))
-  //   }
+    const datos = {
+      name : nameRef.current.value,
+      email : emailRef.current.value,
+      password : passwordRef.current.value,
+      password_confirmation: passwordConfirmRef.current.value
+    }
+    
+    try {
+        const respuesta = await clienteAxios.post('/api/registro', datos)
+        console.log(respuesta)
+    } catch (error) {
+        setErrores(Object.values(error.response.data.errors))
+    }
 
-  // }
+  }
 
 
   return (
@@ -37,11 +39,11 @@ export default function Registro() {
 
     <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10">
         <form 
-            action=''
+            
             onSubmit={handleSubmit}
             noValidate
         >
-            {errores ? errores.map(error =>   <p>{error}</p>) : null }
+            {errores ? errores.map( error =>   <Alerta>{error}</Alerta> ) : null }
             <div className="mb-4">
                 <label htmlFor="name" className="text-slate-800">Nombre: </label>
                 <input 
