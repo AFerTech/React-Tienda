@@ -43,7 +43,7 @@ export default function Registro() {
             onSubmit={handleSubmit}
             noValidate
         >
-            {errores ? errores.map( error =>   <Alerta>{error}</Alerta> ) : null }
+            {errores ? errores.map(( error,i) =>   <Alerta key={i}>{error}</Alerta> ) : null }
             <div className="mb-4">
                 <label htmlFor="name" className="text-slate-800">Nombre: </label>
                 <input 
