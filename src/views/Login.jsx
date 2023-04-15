@@ -23,9 +23,7 @@ export default function Login() {
       password : passwordRef.current.value,
     }
     
-    login(datos,setErrores){
-      
-    }
+    login(datos,setErrores)
     
 
   }
