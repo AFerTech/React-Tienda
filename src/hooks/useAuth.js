@@ -35,8 +35,20 @@ export const useAuth = ({middleware, url}) => {
     const registro = () => {
 
     }
-    const logout = () => {
 
+    const logout = async () => {
+        try {
+            await clienteAxios.post('/api/logout',  null, {
+                headers:{
+                    Authorization: `Bearer ${token}`
+               }
+            })
+            localStorage.removeItem('AUHT_TOKEN')
+            await mutate(undefined)
+        } catch (error) {
+            throw Error(error?.response?.data?.errors)
+            
+        }
     }
     console.log(user)
     console.log(error)
