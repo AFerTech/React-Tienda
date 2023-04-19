@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth"
 export default function Sidebar() {
 
     const {categorias} = useQuiosco()
-    const { logout} = useAuth ({middleware: 'auth'})
+    const { logout, user} = useAuth ({middleware: 'auth'})
   return (
     <aside className='md:w-72'>
         <div className="p-4">
@@ -15,6 +15,8 @@ export default function Sidebar() {
             alt="Logo" 
             />
         </div>
+
+        <p className="my-10 text-xl- text-center">{user?.name}</p>
 
         <div className="mt-10">
             {categorias.map(categoria =>(

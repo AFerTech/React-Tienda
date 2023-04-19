@@ -1,6 +1,5 @@
 
 import useSWR from 'swr';
-import clienteAxios from "../config/axios";
 import { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,15 +24,23 @@ export const useAuth = ({middleware, url}) => {
         try {
             const {data} = await clienteAxios.post('/api/login', datos)
             localStorage.setItem('AUTH_TOKEN', data.token);
-            setErrores([])
-            await mutate()
+            setErrores([]);
+            await mutate(undefined);
         } catch (error) {
             setErrores(Object.values(error.response.data.errors))
         }
     }
 
-    const registro = () => {
-
+    const registro =async (datos, setErrores) => {
+        try {
+            const {data} = await clienteAxios.post('/api/registro', datos)
+            localStorage.setItem('AUTH_TOKEN',  data.token);
+            setErrores([]);
+            await mutate();
+        } catch (error) {
+            setErrores(Object.values(error.response.data.errors))
+        }
+    
     }
 
     const logout = async () => {
@@ -44,17 +51,13 @@ export const useAuth = ({middleware, url}) => {
                     Authorization: `Bearer ${token}`
                }
             })
-            localStorage.removeItem('AUHT_TOKEN')
-            await mutate()
+            localStorage.removeItem('AUHT_TOKEN');
+            await mutate();
         } catch (error) {
             throw Error(error?.response?.data?.errors)
             
         }
     }
-
-    console.log(user)
-    console.log(error)
-
     useEffect(() => {
 
         if(middleware === 'guest' && url && user){
