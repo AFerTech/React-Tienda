@@ -2,6 +2,7 @@
 import useSWR from 'swr';
 import { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import clienteAxios from '../config/axios';
 
 export const useAuth = ({middleware, url}) => {
 
@@ -24,8 +25,8 @@ export const useAuth = ({middleware, url}) => {
         try {
             const {data} = await clienteAxios.post('/api/login', datos)
             localStorage.setItem('AUTH_TOKEN', data.token);
-            setErrores([]);
-            await mutate(undefined);
+            setErrores([])
+            await mutate(undefined)
         } catch (error) {
             setErrores(Object.values(error.response.data.errors))
         }
@@ -35,8 +36,8 @@ export const useAuth = ({middleware, url}) => {
         try {
             const {data} = await clienteAxios.post('/api/registro', datos)
             localStorage.setItem('AUTH_TOKEN',  data.token);
-            setErrores([]);
-            await mutate();
+            setErrores([])
+            await mutate()
         } catch (error) {
             setErrores(Object.values(error.response.data.errors))
         }
@@ -52,7 +53,7 @@ export const useAuth = ({middleware, url}) => {
                }
             })
             localStorage.removeItem('AUHT_TOKEN');
-            await mutate();
+            await mutate(undefined);
         } catch (error) {
             throw Error(error?.response?.data?.errors)
             
